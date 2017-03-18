@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="69px" height="14px" viewBox="0 0 69 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.1 (33804) - http://www.bohemiancoding.com/sketch -->
+    <title>alat</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="r" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="mobile-number-copy-15" transform="translate(-1161.000000, -731.000000)" fill="#FFFFFF">
+            <g id="alat" transform="translate(1161.000000, 731.000000)">
+                <polygon id="Path" points="62.3076923 3.2 62.3076923 14 65.7115385 14 65.7115385 3.2 69 3.2 69 0 59 0 59 3.2"></polygon>
+                <path d="M47.7867232,14 L51,14 L51,13.4866008 L45.1977401,8.8817842e-16 L43.7838983,8.8817842e-16 L38,13.4866008 L38,14 L41.2132768,14 L41.9661017,12.2623413 L47.0338983,12.2623413 L47.7867232,14 Z M45.9689266,9.24118477 L43.0310734,9.24118477 L44.4816384,5.60789845 L45.9689266,9.24118477 Z" id="Combined-Shape"></path>
+                <polygon id="Path" points="24.3179724 0 21 0 21 14 29 14 29 10.78 24.3179724 10.78"></polygon>
+                <path d="M9.78672316,14 L13,14 L13,13.4866008 L7.19774011,8.8817842e-16 L5.78389831,8.8817842e-16 L0,13.4866008 L0,14 L3.21327684,14 L3.96610169,12.2623413 L9.03389831,12.2623413 L9.78672316,14 Z M7.96892655,9.24118477 L5.03107345,9.24118477 L6.48163842,5.60789845 L7.96892655,9.24118477 Z" id="Combined-Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>
