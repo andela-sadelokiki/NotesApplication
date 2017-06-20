@@ -42,10 +42,14 @@ export class HomeComponent implements OnInit {
   removeTag(id) {
     this.api.deleteTag(id).subscribe(() => {
         console.log('deleted');
-        // this.allNotes.splice(this.allNotes.indexOf(id), 1);
       }, err => {
         alert('failed to delete note');
       });
   }
+
+  gotoUpdate(id) {
+    this.router.navigate(['update', id]);
+  }
+
 
 }
