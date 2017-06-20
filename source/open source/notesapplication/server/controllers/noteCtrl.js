@@ -130,6 +130,7 @@ const noteCtrl = {
   },
 
   updateNote: (req, res) => {
+    console.log(req, 'request');
     let noteId = req.params.id;
 
     db.note.find({ 

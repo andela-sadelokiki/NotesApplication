@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   deleteNote(id) {
     this.api.deleteNote(id).subscribe(() => {
       console.log('deleted');
-      this.allNotes.splice(this.allNotes.indexOf(id), 1);
+      this.allNotes = this.allNotes.filter(e => e.id !== id);
     }, err => {
       alert('failed to delete note');
     })
@@ -48,6 +48,7 @@ export class HomeComponent implements OnInit {
   }
 
   gotoUpdate(id) {
+    console.log(id);
     this.router.navigate(['update', id]);
   }
 

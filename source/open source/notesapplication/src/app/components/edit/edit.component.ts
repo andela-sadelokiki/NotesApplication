@@ -13,6 +13,8 @@ export class EditComponent implements OnInit {
   public noteDetails;
   public paramId;
   public noteId;
+  public allNotes = [];
+  public populatedTag = [];
 
   constructor(private fb: FormBuilder, private api: ApiService, private router: Router, private route: ActivatedRoute) { 
     this.editForm = this.fb.group({
@@ -23,51 +25,67 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.buildForm();
+    this.fetchId();
+    this.populateForm();
   }
 
-   buildForm() {
-    this.editForm = this.fb.group({
-      title: [this.noteDetails.title],
-      content: [this.noteDetails.content]
+  populateForm() {
+    this.api.fetchNotes().subscribe((res:any) => {
+      this.allNotes = res;
+      this.noteDetails = this.getNoteDetails(this.noteId, this.allNotes);
+      console.log('details', this.noteDetails.tags);
+      this.noteDetails.tags.map((e) => {
+        this.populatedTag.push(e.name);
+      })
+      if(this.noteDetails.title) {
+        this.buildForm();
+      }
+    }, err => {
     });
-  console.log('building', this.noteDetails, this.editForm);
   }
 
-   initForm() {
-   this.editForm = new FormGroup({
-       title: new FormControl({
-         value: ''
-       }),
-       content: new FormControl({
-         value: ''
-       })
-     })
+  buildForm() {
+    this.editForm = this.fb.group({
+      title: [this.noteDetails.title || ''],
+      content: [this.noteDetails.content || ''],
+      tag: [this.populatedTag.toString() || '']
+    });
   }
+
+  // initForm() {
+  //   this.editForm = this.fb.group({
+  //     title: [this.noteDetails.title || ''],
+  //     content: [''],
+  //     tag: ['']
+  //   });
+  // }
 
  fetchId() {
     this.paramId =  this.route.params.subscribe(params => {
-      let id = params['id']
+      console.log(params);
+      let id = +params['id']
       this.noteId = id;
     });
   }
 
 
   getNoteDetails(id, notes) {
+    console.log(id, notes);
     for (let i = 0; i < notes.length; i++) {
-      if (notes[i]._id === id) {
+      if (notes[i].id === id) {
         return notes[i];
       }
     }
   }
 
-  updateNote(id) {
+  updateNote() {
+    // this.initForm();
     let note = {
       title: this.editForm.get('title').value,
       content: this.editForm.get('content').value,
       tag: this.editForm.get('tag').value
     }
-    this.api.updateNote(id,note).subscribe((res:any)=> {
+    this.api.updateNote(this.noteId, note).subscribe((res:any)=> {
       console.log('note updated', res);
       this.router.navigate(['']);
     }, err => {
