@@ -14,7 +14,7 @@ module.exports = (app) => {
     .delete(noteCtrl.deleteNote)
     .put(noteCtrl.updateNote)
 
-  router.route('/notes/:id')
+  router.route('/tags/:id')
     .delete(tagCtrl.deleteTag)
     .put(tagCtrl.updateTag)
 

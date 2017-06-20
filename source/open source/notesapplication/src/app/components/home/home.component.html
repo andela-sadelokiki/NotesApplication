@@ -1,0 +1,27 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo">iNote</a>
+     <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="contribute.html">Contribute</a></li>
+        <li><a href="update.html">Update</a></li>
+      </ul>
+  </div>
+</nav>
+<div class="center-align">
+  <button (click)="gotoAdd()" class="waves-effect waves-light btn"><i class="material-icons left"></i>Create</button>
+</div>
+<div class="container">
+  <ul class="collection">
+    <li class="collection-item avatar" *ngFor="let note of allNotes let i=index;">
+      <span class="title"><h5>{{note.title}}</h5></span>
+      <p>{{note.content}}<br>
+          <span class="tags" *ngFor="let tag of note.tags">{{tag.name}}{{tag.id}}<i class="icon-delete" (click)="removeTag(tag.id)" class="material-icons">delete</i></span>
+      </p>
+      <div class="secondary-content">
+        <span (click)="deleteNote(note.id)" class="actions"><i class="material-icons">edit</i></span>
+        <span (click)="deleteNote(note.id)" class="actions"><i class="material-icons">delete</i></span>
+      </div>
+    </li>
+  </ul>
+</div>
