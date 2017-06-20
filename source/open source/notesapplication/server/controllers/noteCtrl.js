@@ -132,12 +132,14 @@ const noteCtrl = {
   updateNote: (req, res) => {
     let noteId = req.params.id;
 
-    db.note.update({ 
-      where: {
-        id: noteId
-      }
-    }).then(() => {
-      res.json({message: 'note deleted'})
+    db.note.find({ 
+      where: {id: noteId}
+    }).then((foundnote) => {
+      foundnote.update(req.body).then(() => {
+        res.json({message: 'Updated'});
+        }).catch((err) => {
+          console.log(err);
+        })
       }).catch((err) => {
         res.status(400).send(err);
       })

@@ -12,11 +12,11 @@ module.exports = (app) => {
   router.route('/notes/:id')
     .get(noteCtrl.findNotesByTag)
     .delete(noteCtrl.deleteNote)
-    .update(noteCtrl.updateNote)
+    .put(noteCtrl.updateNote)
 
-  // router.route('/notes/:id')
-  //   .delete(tagCtrl.deleteTag)
-  //   .update(tagCtrl.updateNote)
+  router.route('/notes/:id')
+    .delete(tagCtrl.deleteTag)
+    .put(tagCtrl.updateTag)
 
   app.use('/', router);
 }
