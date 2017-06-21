@@ -3,11 +3,11 @@
 }
 
 .tags {
-  color:#26a69a;
-}
-
-.waves-effect {
-  /*margin-top: 24px;*/
+  padding: 2px;
+  border: 1px solid;
+  border-radius: 5px;
+  color: rgba(255,255,255,0.7);
+  background-color: #356d95;
 }
 
 .actions {
@@ -20,4 +20,8 @@
 
 .browser-default {
   margin-top: 33px;
+}
+
+.delete {
+  color: red;
 }
