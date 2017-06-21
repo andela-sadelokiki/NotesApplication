@@ -17,3 +17,7 @@
 .icon-delete {
   cursor: pointer;
 }
+
+.browser-default {
+  margin-top: 33px;
+}

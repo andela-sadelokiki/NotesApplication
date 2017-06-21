@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public allNotes = [];
+  public allTags = [];
   public sFilter = '';
   public filteredNotes;
   public searchQuery = ''
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.populateNotes();
-    this.customFilter();
+    this.getAllTags();
   }
 
   populateNotes() {
@@ -57,9 +58,24 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  // gwtNotesByTag() {
-    
-  // }
+  getAllTags() {
+    this.api.fetchTags().subscribe((res) => {
+      console.log(res);
+      this.allTags = res;
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  fetchNotesByTag(id) {
+    this.api.fetchNotesByTag(id).subscribe((res:any) => {
+      this.router.navigate(['']);
+      this.allNotes = res;
+    }, err => {
+      this.allNotes = [];
+    });
+  }
+
   searchSubmit(e) {
     console.log(e, 'keycode');
     if (e.keyCode == 13) {

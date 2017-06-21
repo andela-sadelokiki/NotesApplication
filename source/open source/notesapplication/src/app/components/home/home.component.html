@@ -10,25 +10,31 @@
 </nav>
 
 <div class="search-input container center-align col s12 m12 l6">
-  <input type="text" class="container search" name="search" (keyup)="searchSubmit($event)" [(ngModel)]="searchQuery"/>
-  <i class="material-icons">search</i>
+  <input type="text" placeholder="Search for..." class="container search" name="search" (keyup)="searchSubmit($event)" [(ngModel)]="searchQuery"/>
 </div>
 
-<div class="container">
-  <button (click)="gotoAdd()" class="waves-effect waves-light btn right"><i class="material-icons left"></i>Create</button>
-  <h5 class="center-align">Notes</h5>
-  <!--<div class="center-align">-->
-  <!--</div>-->
-  <ul class="collection">
-    <li class="collection-item avatar" *ngFor="let note of allNotes let i=index;">
-      <span class="title"><h6><b>{{note.title}}</b></h6></span>
-      <p>{{note.content}}<br>
-          <span class="tags" *ngFor="let tag of note.tags">{{tag.name}}</span>
-      </p>
-      <div class="secondary-content">
-        <span (click)="gotoUpdate(note.id)" class="actions"><i class="material-icons">edit</i></span>
-        <span (click)="deleteNote(note.id)" class="actions"><i class="material-icons">delete</i></span>
-      </div>
-    </li>
-  </ul>
+<div class="container row">
+  <div class="input-field col s4">
+     <select (change)="fetchNotesByTag($event.target.value)" class="browser-default">
+      <option value="{{tag.id}}" *ngFor ="let tag of allTags; let i = index" selected>{{tag.name}}</option>
+    </select>
+  </div>
+  <div class="col s8">
+    <button (click)="gotoAdd()" class="waves-effect waves-light btn right"><i class="material-icons left"></i>Create</button>
+    <h5 class="center-align">Notes</h5>
+    <!--<div class="center-align">-->
+    <!--</div>-->
+    <ul class="collection">
+      <li class="collection-item avatar" *ngFor="let note of allNotes let i=index;">
+        <span class="title"><h6><b>{{note.title}}</b></h6></span>
+        <p>{{note.content}}<br>
+            <span class="tags" *ngFor="let tag of note.tags">{{tag.name}}</span>
+        </p>
+        <div class="secondary-content">
+          <span (click)="gotoUpdate(note.id)" class="actions"><i class="material-icons">edit</i></span>
+          <span (click)="deleteNote(note.id)" class="actions"><i class="material-icons">delete</i></span>
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>

@@ -22,6 +22,22 @@ export class ApiService {
     })
   };
 
+  fetchTags(): Observable<any[]> {
+    return this.http.get(this.basetagsUrl).map((res: any) => {
+      return res._body ? res.json() : null
+    }).catch((err: any) => {
+      return Observable.throw(err || 'Server error');
+    })
+  };
+
+  fetchNotesByTag(id): Observable<any[]> {
+    return this.http.get(`${this.basenotesUrl}/${id}`).map((res: any) => {
+      return res._body ? res.json() : null
+    }).catch((err: any) => {
+      return Observable.throw(err || 'Server error');
+    })
+  };
+
   addNote(note): Observable<any[]> {
     return this.http.post(this.basenotesUrl, note).map((res: any) => {
       return res._body ? res.json() : null
@@ -61,6 +77,8 @@ export class ApiService {
       return Observable.throw(err || 'Server error');
     });
   };
+
+  
 
    updateTag(id, tag): Observable<any[]> {
     return this.http.put(`${this.basetagsUrl}/${id}`, tag).map((res: any) => {

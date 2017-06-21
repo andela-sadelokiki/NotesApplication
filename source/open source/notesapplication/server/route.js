@@ -21,7 +21,7 @@ module.exports = (app) => {
     .put(tagCtrl.updateTag)
 
   router.route('/tags')
-    .get(tagCtrl  .getTags)
+    .get(tagCtrl.getTags)
 
   app.use('/', router);
 }
