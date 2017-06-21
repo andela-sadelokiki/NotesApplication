@@ -1,5 +1,7 @@
 <div class="row container">
-    <form class="col s12" [formGroup]="editForm" ngSubmit="updateNote(id)">
+  <h5 class="Update Note"></h5>
+    <form class="update col s12" [formGroup]="editForm" ngSubmit="updateNote(id)">
+      <h6 class="center-align">Update a Note</h6>
       <div class="row">
         <div class="input-field col s12">
           <input placeholder="Placeholder" formControlName="title" id="first_name" type="text" class="validate">

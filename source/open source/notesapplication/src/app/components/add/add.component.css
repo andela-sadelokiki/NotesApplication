@@ -1,0 +1,38 @@
+.add {
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    padding: 35px 70px;
+}
+
+.waves-effect {
+  margin-bottom: 20px;
+}
+
+.valign-wrapper {
+  margin-bottom: 1rem;
+  margin-top: 20px;
+}
+  .error-info {
+    background: rgba(208, 2, 27, 0.07);
+    border-radius: 5px;
+    color: #D0021B;
+    margin: 0 auto;
+    padding: 2px 5px;
+    border: 1px solid rgba(160, 11, 64, 0.16);
+    font-size: 12px;
+    transition: .2s width ease-out;
+    text-align: center;
+  }
+
+.error-info i {
+  vertical-align: middle;
+  font-size: 20px;
+  padding-right: 5px;
+}
+
+span.back {
+    cursor: pointer;
+    color: grey;
+    padding: 0px 38px;
+    padding-bottom: 23px;
+}

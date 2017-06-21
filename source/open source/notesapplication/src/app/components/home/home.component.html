@@ -13,14 +13,15 @@
   <input type="text" class="container search" name="search" (keyup)="customFilter()" [(ngModel)]= "sFilter"/>
   <i class="material-icons">search</i>
 </div>-->
-<div class="center-align">
-  <button (click)="gotoAdd()" class="waves-effect waves-light btn"><i class="material-icons left"></i>Create</button>
-</div>
+
 <div class="container">
+  <button (click)="gotoAdd()" class="waves-effect waves-light btn right"><i class="material-icons left"></i>Create</button>
+  <h5 class="center-align">Notes</h5>
+  <!--<div class="center-align">-->
+  <!--</div>-->
   <ul class="collection">
-    <h6 class="center-align">My Notes</h6>
     <li class="collection-item avatar" *ngFor="let note of allNotes let i=index;">
-      <span class="title"><h6>{{note.title}}</h6></span>
+      <span class="title"><h6><b>{{note.title}}</b></h6></span>
       <p>{{note.content}}<br>
           <span class="tags" *ngFor="let tag of note.tags">{{tag.name}}</span>
       </p>

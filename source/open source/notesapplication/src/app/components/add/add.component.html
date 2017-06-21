@@ -1,8 +1,15 @@
 <div class="row container">
-    <form class="col s12" [formGroup]="addForm" ngSubmit="createNote()">
+    <form class="add col s12" [formGroup]="addForm" ngSubmit="onSubmit()">
+      <h6 class="center-align">Add a Note</h6>
+      <div *ngIf="error" class="valign-wrapper">
+        <div class="error-info valign" [style.width]="errorOptions.width">
+          <i class="mdi mdi-alert-circle"></i>
+          <span>{{errorOptions.message}}</span>
+        </div>
+      </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" formControlName="title" id="first_name" type="text" class="validate">
+          <input placeholder="Placeholder" formControlName="title" (focus)="clearError()" id="first_name" type="text" class="validate">
           <label for="first_name">Name</label>
         </div>
         <div class="input-field col s12">
@@ -10,12 +17,13 @@
           <label for="last_name">Content</label>
         </div>
           <div class="input-field col s12">
-          <input id="last_name" type="text" formControlName="tag" class="validate">
+          <input id="last_name" type="text" formControlName="tag" (focus)="clearError()" class="validate">
           <label for="last_name">Tags</label>
         </div>
       </div>
       <div class="center-align">
-       <button (click)="createNote()" class="waves-effect waves-light btn"><i class="material-icons left"></i>Create</button>
+        <span class="back" (click)="goBack()">Go Back</span>
+       <button (click)="onSubmit()" class="waves-effect waves-light btn"><i class="material-icons left"></i>Create</button>
       </div>
     </form>
 </div>
