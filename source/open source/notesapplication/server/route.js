@@ -7,7 +7,9 @@ module.exports = (app) => {
   router.route('/notes')
     .post(noteCtrl.createNote)
     .get(noteCtrl.getNotes)
-    
+
+  router.route('/search')
+    .get(noteCtrl.searchNotes)  
   
   router.route('/notes/:id')
     .get(noteCtrl.findNotesByTag)

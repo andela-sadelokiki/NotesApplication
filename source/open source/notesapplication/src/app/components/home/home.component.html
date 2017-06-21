@@ -9,10 +9,10 @@
   </div>
 </nav>
 
-<!--<div class="search-input container center-align col s12 m12 l6">
-  <input type="text" class="container search" name="search" (keyup)="customFilter()" [(ngModel)]= "sFilter"/>
+<div class="search-input container center-align col s12 m12 l6">
+  <input type="text" class="container search" name="search" (keyup)="searchSubmit($event)" [(ngModel)]="searchQuery"/>
   <i class="material-icons">search</i>
-</div>-->
+</div>
 
 <div class="container">
   <button (click)="gotoAdd()" class="waves-effect waves-light btn right"><i class="material-icons left"></i>Create</button>

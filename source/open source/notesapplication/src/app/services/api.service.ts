@@ -10,6 +10,7 @@ import 'rxjs/add/operator/catch';
 export class ApiService {
   public basenotesUrl = "http://localhost:3000/notes";
   public basetagsUrl = "http://localhost:3000/tags";
+  public searchUrl = "http://localhost:3000/search";
 
   constructor(private http: Http) { }
 
@@ -39,6 +40,14 @@ export class ApiService {
 
   deleteNote(id): Observable<any[]> {
     return this.http.delete(`${this.basenotesUrl}/${id}`).map((res: any) => {
+      return res._body ? res.json() : null
+    }).catch((err: any) => {
+      return Observable.throw(err || 'Server error');
+    });
+  };
+
+  searchNote(query): Observable<any[]> {
+    return this.http.get(`${this.searchUrl}?title=${query}`).map((res: any) => {
       return res._body ? res.json() : null
     }).catch((err: any) => {
       return Observable.throw(err || 'Server error');

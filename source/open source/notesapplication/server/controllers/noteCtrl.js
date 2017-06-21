@@ -103,6 +103,29 @@ const noteCtrl = {
     });
   },
 
+  searchNotes: (req, res) => {
+    let title = req.query.title;
+    console.log(title, 'tittttle');
+    db.note.findAll({
+      where: {
+        $or: [{
+          title: {
+            $iLike: `%${title}%`
+          }}, {
+            content: {
+              $iLike: `%${title}%`
+            }
+          }
+        ]
+      }
+    }).then((foundnote) => {
+      console.log(foundnote);
+      res.send(foundnote);
+    }).catch((err) => {
+      console.log(err);
+    })
+  },
+
   getNotes: (req, res) => {
     db.note.findAll({
       include: {

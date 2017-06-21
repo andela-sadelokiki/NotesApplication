@@ -11,6 +11,7 @@ export class HomeComponent implements OnInit {
   public allNotes = [];
   public sFilter = '';
   public filteredNotes;
+  public searchQuery = ''
 
   constructor(private api: ApiService, private router: Router) { }
 
@@ -56,8 +57,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  gwtNotesByTag() {
+  // gwtNotesByTag() {
     
+  // }
+  searchSubmit(e) {
+    console.log(e, 'keycode');
+    if (e.keyCode == 13) {
+      this.searchNote(this.searchQuery);
+    }
+  }
+
+  searchNote(query) {
+    this.api.searchNote(query).subscribe((res) => {
+      console.log(res);
+      this.allNotes = res;
+    }, err => {
+      console.log(err);
+    })
   }
 
   removeTag(id) {

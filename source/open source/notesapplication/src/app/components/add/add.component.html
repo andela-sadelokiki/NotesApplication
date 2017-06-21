@@ -9,16 +9,13 @@
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" formControlName="title" (focus)="clearError()" id="first_name" type="text" class="validate">
-          <label for="first_name">Name</label>
+          <input placeholder="Title" formControlName="title" (focus)="clearError()" id="first_name" type="text" class="validate">
         </div>
         <div class="input-field col s12">
-          <input id="last_name" type="text" formControlName="content" class="validate">
-          <label for="last_name">Content</label>
+          <input id="last_name" type="text" placeholder="content" formControlName="Content" class="validate">
         </div>
           <div class="input-field col s12">
-          <input id="last_name" type="text" formControlName="tag" (focus)="clearError()" class="validate">
-          <label for="last_name">Tags</label>
+          <input id="last_name" type="text" placeholder="Tags: Seperate tags with a comma" formControlName="tag" (focus)="clearError()" class="validate">
         </div>
       </div>
       <div class="center-align">

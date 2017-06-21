@@ -4,19 +4,17 @@
       <h6 class="center-align">Update a Note</h6>
       <div class="row">
         <div class="input-field col s12">
-          <input placeholder="Placeholder" formControlName="title" id="first_name" type="text" class="validate">
-          <label for="first_name">Name</label>
+          <input placeholder="Title" formControlName="title" id="first_name" type="text" class="validate">
         </div>
         <div class="input-field col s12">
-          <input id="last_name" type="text" formControlName="content" class="validate">
-          <label for="last_name">Content</label>
+          <input placeholder="Content"  id="last_name" type="text" formControlName="content" class="validate">
         </div>
           <div class="input-field col s12">
-          <input id="last_name" type="text" formControlName="tag" class="validate">
-          <label for="last_name">Tags</label>
+          <input placeholder="Tags: seperate tags with a comma" id="last_name" type="text" formControlName="tag" class="validate">
         </div>
       </div>
       <div class="center-align">
+        <span class="back" (click)="goBack()">Go Back</span>
        <button (click)="updateNote()" class="waves-effect waves-light btn"><i class="material-icons left"></i>Update</button>
       </div>
     </form>
