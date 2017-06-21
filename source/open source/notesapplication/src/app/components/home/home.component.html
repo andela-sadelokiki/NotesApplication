@@ -16,7 +16,8 @@
 <div class="container row">
   <div class="input-field col s4">
      <select (change)="fetchNotesByTag($event.target.value)" class="browser-default">
-      <option value="{{tag.id}}" *ngFor ="let tag of allTags; let i = index" selected>{{tag.name}}</option>
+      <option value="" disabled selected>Select a tag</option>
+      <option value="{{tag.id}}" *ngFor ="let tag of allTags; let i = index">{{tag.name}}</option>
     </select>
   </div>
   <div class="col s8">
