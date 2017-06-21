@@ -17,18 +17,29 @@ const tagCtrl = {
   },
 
   updateTag: (req, res) => {
-    let tagId = req.params.Id;
+    console.log(req, 'request');
+    let tagId = req.params.id;
 
-    db.tag.update({
-      where: {
-        id: tagId
-      }
-    }).then(() => {
-      res.json({message: 'tag deleted'});
+    db.tag.find({ 
+      where: {id: tagId}
+    }).then((foundtag) => {
+      foundtag.update(req.body).then(() => {
+        res.json({message: 'Updated'});
+        }).catch((err) => {
+          console.log(err);
+        })
+      }).catch((err) => {
+        res.status(400).send(err);
+      })
+    },
+
+  getTags: (req, res) => {
+    db.tag.findAll({}).then((tags) => {
+      res.send(tags)
     }).catch((err) => {
-      res.status(400).send(err);
+      console.log(err);
     })
-  }
+  },
   
 }
 module.exports = tagCtrl;

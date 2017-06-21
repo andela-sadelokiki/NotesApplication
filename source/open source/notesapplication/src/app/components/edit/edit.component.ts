@@ -46,19 +46,11 @@ export class EditComponent implements OnInit {
 
   buildForm() {
     this.editForm = this.fb.group({
-      title: [this.noteDetails.title || ''],
-      content: [this.noteDetails.content || ''],
-      tag: [this.populatedTag.toString() || '']
+      title: [ '' || this.noteDetails.title ],
+      content: [ '' || this.noteDetails.content],
+      tag: [ '' || this.populatedTag.toString()]
     });
   }
-
-  // initForm() {
-  //   this.editForm = this.fb.group({
-  //     title: [this.noteDetails.title || ''],
-  //     content: [''],
-  //     tag: ['']
-  //   });
-  // }
 
  fetchId() {
     this.paramId =  this.route.params.subscribe(params => {

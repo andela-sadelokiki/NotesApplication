@@ -9,11 +9,14 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   public allNotes = [];
+  public sFilter = '';
+  public filteredNotes;
 
   constructor(private api: ApiService, private router: Router) { }
 
   ngOnInit() {
     this.populateNotes();
+    this.customFilter();
   }
 
   populateNotes() {
@@ -37,6 +40,24 @@ export class HomeComponent implements OnInit {
   gotoAdd() {
     console.log('gootoadd');
     this.router.navigate(['add']);
+  }
+
+  customFilter() {
+    let query = this.sFilter.toLowerCase();
+    this.filteredNotes = this.allNotes;
+
+    if (query.trim()) {
+      this.filteredNotes.forEach((e, i) => {
+        console.log(e,i)
+        this.filteredNotes[i] = e.filter(f => String(f.title).toLowerCase().includes(query)
+          || f.content.toLowerCase().includes(query)
+        );
+      });
+    }
+  }
+
+  gwtNotesByTag() {
+    
   }
 
   removeTag(id) {

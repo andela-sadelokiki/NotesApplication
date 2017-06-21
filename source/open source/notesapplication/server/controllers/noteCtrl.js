@@ -134,15 +134,27 @@ const noteCtrl = {
     let noteId = req.params.id;
 
     db.note.find({ 
-      where: {id: noteId}
+      where: {id: noteId},
+      include: {
+        model: db.tag
+      }
     }).then((foundnote) => {
-      foundnote.update(req.body).then(() => {
-        res.json({message: 'Updated'});
-        }).catch((err) => {
-          console.log(err);
+      foundnote.update({
+        title: req.body.title,
+        content: req.body.content
+      }).then((foundnote) => {
+        console.log(splittedTags, tagIds, 'tag ids hereeeee')
+        var splittedTags = noteCtrl.splitTags(req.body.tag);
+        let tagIds = splittedTags.map(e => e.dataValues.id);
+        foundnote.setTags(tagIds).then((s) => {
+          console.log('tags well set');
+          res.send(foundnote);
         })
       }).catch((err) => {
         res.status(400).send(err);
+        })
+      }).catch((err) => {
+        console.log(err);
       })
     },
 

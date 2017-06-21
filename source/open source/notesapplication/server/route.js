@@ -18,5 +18,8 @@ module.exports = (app) => {
     .delete(tagCtrl.deleteTag)
     .put(tagCtrl.updateTag)
 
+  router.route('/tags')
+    .get(tagCtrl  .getTags)
+
   app.use('/', router);
 }
