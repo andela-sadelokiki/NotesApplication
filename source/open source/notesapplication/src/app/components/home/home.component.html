@@ -32,7 +32,7 @@
             <span class="tags" *ngFor="let tag of note.tags">{{tag.name}}</span>
         </p>
         <div class="secondary-content">
-          <span (click)="gotoUpdate(note.id)" class="actions"><i class="material-icons">edit</i></span>
+          <span (click)="gotoUpdate(note.id)" class="actions update"><i class="material-icons">edit</i></span>
           <span (click)="deleteNote(note.id)" class="actions delete"><i class="material-icons">delete</i></span>
         </div>
       </li>
